@@ -9,49 +9,49 @@ All colors MUST be HSL.
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 350 67% 1%;
+    --foreground: 210 50% 20%;
 
     --card: 0 0% 100%;
-    --card-foreground: 350 67% 1%;
+    --card-foreground: 210 50% 20%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 350 67% 1%;
+    --popover-foreground: 210 50% 20%;
 
-    --primary: 350 67% 1%;
+    --primary: 210 70% 60%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 0 0% 97%;
-    --secondary-foreground: 350 67% 1%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 210 50% 20%;
 
-    --muted: 0 0% 96%;
-    --muted-foreground: 0 0% 45%;
+    --muted: 210 30% 96%;
+    --muted-foreground: 210 20% 50%;
 
-    --accent: 43 57% 61%;
+    --accent: 200 80% 65%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 90%;
-    --input: 0 0% 90%;
-    --ring: 43 57% 61%;
+    --border: 210 30% 88%;
+    --input: 210 30% 88%;
+    --ring: 210 70% 60%;
 
     --radius: 1rem;
 
-    /* Noctivent Brand Colors */
-    --gold: 43 57% 61%;
-    --gold-light: 43 57% 75%;
-    --gold-dark: 43 57% 45%;
-    --deep-black: 350 67% 1%;
+    /* Soft Blue Brand Colors */
+    --gold: 210 70% 60%;
+    --gold-light: 200 80% 75%;
+    --gold-dark: 220 60% 45%;
+    --deep-black: 210 50% 20%;
     
     /* Glassmorphism */
     --glass-bg: 0 0% 100% / 0.7;
-    --glass-border: 0 0% 100% / 0.2;
-    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+    --glass-border: 210 50% 95% / 0.3;
+    --glass-shadow: 0 8px 32px 0 rgba(66, 135, 245, 0.15);
     
     /* Gradients */
-    --gradient-gold: linear-gradient(135deg, hsl(43 57% 61%) 0%, hsl(43 57% 75%) 100%);
-    --gradient-hero: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(0 0% 98%) 100%);
+    --gradient-gold: linear-gradient(135deg, hsl(210 70% 60%) 0%, hsl(200 80% 75%) 100%);
+    --gradient-hero: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(210 40% 98%) 100%);
     
     /* Animations */
     --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -129,20 +129,42 @@ All colors MUST be HSL.
 
 @layer utilities {
   .glass-card {
-    @apply bg-white/70 backdrop-blur-xl border border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.1)];
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.9),
+      rgba(240, 248, 255, 0.75)
+    );
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border: 2px solid rgba(200, 220, 245, 0.6);
+    box-shadow: 
+      0 8px 32px 0 rgba(66, 135, 245, 0.15),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.9),
+      0 1px 0 0 rgba(200, 220, 245, 0.5);
   }
 
   .glass-card-dark {
-    @apply bg-black/5 backdrop-blur-xl border border-black/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.05)];
+    background: linear-gradient(
+      135deg,
+      rgba(66, 135, 245, 0.25),
+      rgba(200, 220, 245, 0.15)
+    );
+    backdrop-filter: blur(28px) saturate(180%);
+    -webkit-backdrop-filter: blur(28px) saturate(180%);
+    border: 2px solid rgba(66, 135, 245, 0.4);
+    box-shadow: 
+      0 12px 40px 0 rgba(66, 135, 245, 0.2),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.4),
+      0 1px 0 0 rgba(200, 220, 245, 0.3);
   }
 
   .gradient-gold {
-    background: linear-gradient(135deg, hsl(43 57% 61%) 0%, hsl(43 57% 75%) 100%);
+    background: linear-gradient(135deg, hsl(210 70% 60%) 0%, hsl(200 80% 75%) 100%);
   }
 
   .text-gradient-gold {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(43 57% 61%) 0%, hsl(43 57% 45%) 100%);
+    background-image: linear-gradient(135deg, hsl(210 70% 60%) 0%, hsl(220 60% 45%) 100%);
   }
 
   .parallax {
@@ -151,6 +173,13 @@ All colors MUST be HSL.
   }
 
   .hover-lift {
-    @apply transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 
+      0 20px 60px 0 rgba(66, 135, 245, 0.25),
+      0 0 0 1px rgba(200, 220, 245, 0.9) inset;
   }
 }
